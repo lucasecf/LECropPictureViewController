@@ -27,7 +27,6 @@ Soon!
 ```objective-c
 LEEditPictureViewController *editPictureController = [[LEEditPictureViewController alloc] initWithImage:image];
 [self presentViewController:editPictureController animated:NO completion:nil];
-}];
 ```
 
 The callback for the cropped picture is given through a block, when creating the editPictureController. See the exemplo below, presenting the `LEEditPictureViewController` inside the delegate of a UIImagePickerController:
@@ -36,19 +35,18 @@ The callback for the cropped picture is given through a block, when creating the
 ```objective-c
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-UIImage *image = info[UIImagePickerControllerOriginalImage];
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
 
-[self dismissViewControllerAnimated:NO completion:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
 
-LEEditPictureViewController *editPictureController = [[LEEditPictureViewController alloc] initWithImage:image];
-editPictureController.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    LEEditPictureViewController *editPictureController = [[LEEditPictureViewController alloc] initWithImage:image];
+    editPictureController.imageView.contentMode = UIViewContentModeScaleAspectFit;
 
-editPictureController.photoAcceptedBlock = ^(UIImage *croppedPicture){
-self.imageView.image = croppedPicture;
-};
+    editPictureController.photoAcceptedBlock = ^(UIImage *croppedPicture){
+        self.imageView.image = croppedPicture;
+    };
 
-
-[self presentViewController:editPictureController animated:NO completion:nil];
+    [self presentViewController:editPictureController animated:NO completion:nil];
 }
 ```
 
