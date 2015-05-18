@@ -4,7 +4,7 @@ LEEditPictureViewController
 ## What is this
 
 Want a nice crop editor for your picture? Not satisfied with the one provided for Apple? Likes rounded images?
-`LEEditPictureViewController` is the component for you :)! See the images and gifs below:
+`LEEditPictureViewController` is the component for you :)! See the how works in the gif below:
 
 <p align="center">
     <img src="Images/gif1.gif" alt="GIF 1" width="320px" />
