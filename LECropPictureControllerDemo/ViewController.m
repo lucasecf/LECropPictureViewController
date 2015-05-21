@@ -51,15 +51,15 @@
     
     [self dismissViewControllerAnimated:NO completion:nil];
     
-    LECropPictureViewController *editPictureController = [[LECropPictureViewController alloc] initWithImage:image andCropPictureType:LECropPictureTypeRounded];
-    editPictureController.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    LECropPictureViewController *cropPictureController = [[LECropPictureViewController alloc] initWithImage:image andCropPictureType:LECropPictureTypeRounded];
+    cropPictureController.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
-    editPictureController.photoAcceptedBlock = ^(UIImage *croppedPicture){
+    cropPictureController.photoAcceptedBlock = ^(UIImage *croppedPicture){
         self.imageView.image = croppedPicture;
     };
 
     
-    [self presentViewController:editPictureController animated:NO completion:nil];
+    [self presentViewController:cropPictureController animated:NO completion:nil];
 }
 
 @end
