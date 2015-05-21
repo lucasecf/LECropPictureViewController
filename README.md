@@ -32,7 +32,7 @@ LECropPictureViewController *cropPictureController = [[LECropPictureViewControll
 [self presentViewController:cropPictureController animated:YES completion:nil];
 ```
 
-The callback for the cropped picture is given through a block, when creating the editPictureController. See the exemplo below, presenting the `LECropPictureViewController` inside the delegate of a UIImagePickerController:
+The callback for the cropped picture is given through a block, when creating the editPictureController. See the exemple below, presenting the `LECropPictureViewController` inside the delegate of a UIImagePickerController:
 
 
 ```objective-c
