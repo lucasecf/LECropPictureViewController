@@ -25,7 +25,6 @@ it, simply add the following line to your Podfile:
 pod "LECropPictureViewController"
 ```
 
-
 ## How to use
 
 `LECropPictureViewController` works with any image. You just have to provide the image and a cropType when creating a new instance, and then present the view controller. The possible cropTypes are:
