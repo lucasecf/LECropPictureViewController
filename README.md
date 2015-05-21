@@ -22,14 +22,14 @@ Soon!
 
 ## How to use
 
-`LEEditPictureViewController` works with any image. You just have to provide the image when creating a new instance, and then present the view controller.
+`LECropPictureViewController` works with any image. You just have to provide the image and a cropType when creating a new instance, and then present the view controller. The possible cropTypes are `LECropPictureTypeRounded` and `LECropPictureTypeRect`.
 
 ```objective-c
-LEEditPictureViewController *editPictureController = [[LEEditPictureViewController alloc] initWithImage:image];
-[self presentViewController:editPictureController animated:NO completion:nil];
+LECropPictureViewController *cropPictureController = [[LECropPictureViewController alloc] initWithImage:image andCropPictureType:LECropPictureTypeRounded];
+[self presentViewController:cropPictureController animated:YES completion:nil];
 ```
 
-The callback for the cropped picture is given through a block, when creating the editPictureController. See the exemplo below, presenting the `LEEditPictureViewController` inside the delegate of a UIImagePickerController:
+The callback for the cropped picture is given through a block, when creating the editPictureController. See the exemplo below, presenting the `LECropPictureViewController` inside the delegate of a UIImagePickerController:
 
 
 ```objective-c
@@ -39,20 +39,20 @@ The callback for the cropped picture is given through a block, when creating the
 
     [self dismissViewControllerAnimated:NO completion:nil];
 
-    LEEditPictureViewController *editPictureController = [[LEEditPictureViewController alloc] initWithImage:image];
-    editPictureController.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    LECropPictureViewController *cropPictureController = [[LECropPictureViewController alloc] initWithImage:image andCropPictureType:LECropPictureTypeRounded];
+    cropPictureController.imageView.contentMode = UIViewContentModeScaleAspectFit;
 
-    editPictureController.photoAcceptedBlock = ^(UIImage *croppedPicture){
+    cropPictureController.photoAcceptedBlock = ^(UIImage *croppedPicture){
         self.imageView.image = croppedPicture;
     };
 
-    [self presentViewController:editPictureController animated:NO completion:nil];
+    [self presentViewController:cropPictureController animated:NO completion:nil];
 }
 ```
 
 ## Customizing
 
-The `LEEditPictureViewController` has public properties for all it's components.
+The `LECropPictureViewController` has public properties for all it's components.
 
 ```objective-c
 @property (weak, nonatomic) UIBarButtonItem *cancelButtonItem;
@@ -60,7 +60,7 @@ The `LEEditPictureViewController` has public properties for all it's components.
 @property (weak, nonatomic) UIImageView *imageView;
 ```
 
-With this, you can do things like changing the contentMode of the imageView, changing the text of the barButtonItems, etc.
+With this, you can do things like changing the **contentMode** of the imageView, changing the **text** of the barButtonItems, etc.
 
 ##Collaborate
 Liked the project? Is there something missing or that could be better? Feel free to contribute :)
