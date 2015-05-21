@@ -14,7 +14,7 @@ Want a nice crop editor for your picture? Not satisfied with the one provided fo
 
 #### Manually
 
-Drag and copy all files in the [__LECropPictureViewController__](LECropPictureController) folder into your project.
+Drag and copy all files in the [__LECropPictureViewController__](LECropPictureViewController) folder into your project.
 
 #### Cocoapods
 
@@ -22,7 +22,10 @@ Soon!
 
 ## How to use
 
-`LECropPictureViewController` works with any image. You just have to provide the image and a cropType when creating a new instance, and then present the view controller. The possible cropTypes are `LECropPictureTypeRounded` and `LECropPictureTypeRect`.
+`LECropPictureViewController` works with any image. You just have to provide the image and a cropType when creating a new instance, and then present the view controller. The possible cropTypes are:
+
+* `LECropPictureTypeRounded` 
+* `LECropPictureTypeRect`
 
 ```objective-c
 LECropPictureViewController *cropPictureController = [[LECropPictureViewController alloc] initWithImage:image andCropPictureType:LECropPictureTypeRounded];
@@ -71,7 +74,7 @@ Liked the project? Is there something missing or that could be better? Feel free
 ``` git checkout -b name-your-feature ```
 
 3. Commit it
-``` git commit -m 'the differece' ```
+``` git commit -m 'the difference' ```
 
 4. Push it
 ``` git push origin name-your-feature ```
