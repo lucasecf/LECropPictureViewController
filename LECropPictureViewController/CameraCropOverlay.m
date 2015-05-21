@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 wemob. All rights reserved.
 //
 
-#import "CameraRoundOverlay.h"
+#import "CameraCropOverlay.h"
 
 
 #define MIN_RESIZE_SIZE 150
@@ -14,30 +14,31 @@
 @import QuartzCore;
 
 
-@interface CameraRoundOverlay ()
+@interface CameraCropOverlay ()
 
-@property(nonatomic, assign) CGPoint circleCenter;
+@property(nonatomic, assign) CGPoint cropCenter;
 
 @end
 
-@implementation CameraRoundOverlay
+@implementation CameraCropOverlay
 
-- (id)initWithFrame:(CGRect)frame andBackgroundColor:(UIColor*)backgroundColor andHoleFrame:(CGRect)holeViewFrame
+- (id)initWithFrame:(CGRect)frame backgroundColor:(UIColor*)backgroundColor cropPictureType:(LECropPictureType)cropPictureType andOverlayFrame:(CGRect)overlayViewFrame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _holeView = [[UIView alloc] initWithFrame:holeViewFrame];
-        _holeView.backgroundColor = [UIColor clearColor];
-        _holeView.layer.borderColor = [UIColor whiteColor].CGColor;
-        _holeView.layer.borderWidth = 2.0;
-        [self addSubview:_holeView];
+        _cropPictureType = cropPictureType;
         
-        UIPanGestureRecognizer *dragGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragCircleView:)];
-        [_holeView addGestureRecognizer:dragGesture];
+        _cropView = [[UIView alloc] initWithFrame:overlayViewFrame];
+        _cropView.backgroundColor = [UIColor clearColor];
+        _cropView.layer.borderColor = [UIColor whiteColor].CGColor;
+        _cropView.layer.borderWidth = 2.0;
+        [self addSubview:_cropView];
         
-        UIPinchGestureRecognizer *scaleGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(resizeCircleView:)];
-        [_holeView addGestureRecognizer:scaleGesture];
+        UIPanGestureRecognizer *dragGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragCropView:)];
+        [_cropView addGestureRecognizer:dragGesture];
         
+        UIPinchGestureRecognizer *scaleGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(resizeCropView:)];
+        [_cropView addGestureRecognizer:scaleGesture];
         
         self.opaque = NO;
         self.backgroundColor = backgroundColor;
@@ -49,34 +50,40 @@
 
 - (void)drawRect:(CGRect)rect
 {
+    
+    
     // Drawing code
     [self.backgroundColor setFill];
     UIRectFill(rect);
     
     // clear the background in the given rectangles
-    CGRect holeRect = self.holeView.frame;
-    CGRect holeRectIntersection = CGRectIntersection( holeRect, rect );
+    CGRect cropRect = self.cropView.frame;
+    CGRect cropRectIntersection = CGRectIntersection(cropRect, rect);
     
     CGContextRef context = UIGraphicsGetCurrentContext();
-    if( CGRectIntersectsRect( holeRectIntersection, rect ) )
+    if( CGRectIntersectsRect( cropRectIntersection, rect ) )
     {
-        CGContextAddEllipseInRect(context, holeRectIntersection);
-        CGContextClip(context);
-        CGContextClearRect(context, holeRectIntersection);
+        if(self.cropPictureType == LECropPictureTypeRounded) {
+            CGContextAddEllipseInRect(context, cropRectIntersection);
+            CGContextClip(context);
+        }
+
+        CGContextClearRect(context, cropRectIntersection);
         CGContextSetFillColorWithColor( context, [UIColor clearColor].CGColor );
-        CGContextFillRect( context, holeRectIntersection);
+        CGContextFillRect( context, cropRectIntersection);
     }
+    
 }
 
--(void)redrawCircleWithFrame:(CGRect)holeFrame
+-(void)redrawCropViewWithFrame:(CGRect)cropFrame
 {
-    _holeView.frame = holeFrame;
+    _cropView.frame = cropFrame;
     [self setNeedsDisplay];
 }
 
 #pragma mark - Gesture Methods
 
--(void)dragCircleView:(UIPanGestureRecognizer*)recognizer
+-(void)dragCropView:(UIPanGestureRecognizer*)recognizer
 {
     //getting translated center point
     CGPoint translation = [recognizer translationInView:self];
@@ -98,15 +105,15 @@
     [recognizer setTranslation:CGPointZero inView:self];
     
     //redraw view to update circle
-    [self redrawCircleWithFrame:recognizer.view.frame];
+    [self redrawCropViewWithFrame:recognizer.view.frame];
 }
 
 
--(void)resizeCircleView:(UIPinchGestureRecognizer*)recognizer
+-(void)resizeCropView:(UIPinchGestureRecognizer*)recognizer
 {
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
-        self.circleCenter = recognizer.view.center;
+        self.cropCenter = recognizer.view.center;
     }
     
     //get frame of view when applying the scale
@@ -118,9 +125,9 @@
     recognizer.view.frame = CGRectMake(0.0, 0.0, sizeSquare, sizeSquare);
     
     //Calculating correct center, to never exceed bounds of parent view
-    CGFloat offsetWidth = MAX(0, (self.circleCenter.x + sizeSquare/2.0) - self.frame.size.width);
-    CGFloat offsetHeight = MAX(0, (self.circleCenter.y + sizeSquare/2.0) - self.frame.size.height);
-    CGPoint newCenter = CGPointMake(self.circleCenter.x - offsetWidth, self.circleCenter.y - offsetHeight);
+    CGFloat offsetWidth = MAX(0, (self.cropCenter.x + sizeSquare/2.0) - self.frame.size.width);
+    CGFloat offsetHeight = MAX(0, (self.cropCenter.y + sizeSquare/2.0) - self.frame.size.height);
+    CGPoint newCenter = CGPointMake(self.cropCenter.x - offsetWidth, self.cropCenter.y - offsetHeight);
     
     CGFloat offsetOriginX = MAX(0, self.frame.origin.x - (newCenter.x - sizeSquare/2.0));
     CGFloat offsetOriginY = MAX(0, self.frame.origin.y - (newCenter.y - sizeSquare/2.0));
@@ -131,7 +138,7 @@
     recognizer.scale = 1;
     
     //redraw view to update circle
-    [self redrawCircleWithFrame:recognizer.view.frame];
+    [self redrawCropViewWithFrame:recognizer.view.frame];
 }
 
 

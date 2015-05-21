@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "LEEditPictureViewController.h"
+#import "LECropPictureViewController.h"
 
 
 @interface ViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
@@ -51,7 +51,7 @@
     
     [self dismissViewControllerAnimated:NO completion:nil];
     
-    LEEditPictureViewController *editPictureController = [[LEEditPictureViewController alloc] initWithImage:image];
+    LECropPictureViewController *editPictureController = [[LECropPictureViewController alloc] initWithImage:image andCropPictureType:LECropPictureTypeRounded];
     editPictureController.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
     editPictureController.photoAcceptedBlock = ^(UIImage *croppedPicture){

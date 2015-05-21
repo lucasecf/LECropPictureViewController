@@ -7,17 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00AB9FFD1B0D638000D12264 /* CameraCropOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 00AB9FF81B0D638000D12264 /* CameraCropOverlay.m */; };
+		00AB9FFE1B0D638000D12264 /* LECropPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00AB9FFA1B0D638000D12264 /* LECropPictureViewController.m */; };
+		00AB9FFF1B0D638000D12264 /* UIImage+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 00AB9FFC1B0D638000D12264 /* UIImage+Utils.m */; };
 		00B247131B0954A6006C0DEF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B247121B0954A6006C0DEF /* main.m */; };
 		00B247161B0954A6006C0DEF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B247151B0954A6006C0DEF /* AppDelegate.m */; };
-		00B247191B0954A6006C0DEF /* LEEditPictureControllerDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 00B247171B0954A6006C0DEF /* LEEditPictureControllerDemo.xcdatamodeld */; };
 		00B2471C1B0954A6006C0DEF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B2471B1B0954A6006C0DEF /* ViewController.m */; };
 		00B2471F1B0954A6006C0DEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00B2471D1B0954A6006C0DEF /* Main.storyboard */; };
 		00B247211B0954A6006C0DEF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00B247201B0954A6006C0DEF /* Images.xcassets */; };
 		00B247241B0954A6006C0DEF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B247221B0954A6006C0DEF /* LaunchScreen.xib */; };
-		00B247301B0954A6006C0DEF /* LEEditPictureControllerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B2472F1B0954A6006C0DEF /* LEEditPictureControllerDemoTests.m */; };
-		00B2474A1B096C6E006C0DEF /* CameraRoundOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B247451B096C6E006C0DEF /* CameraRoundOverlay.m */; };
-		00B2474B1B096C6E006C0DEF /* LEEditPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B247471B096C6E006C0DEF /* LEEditPictureViewController.m */; };
-		00B2474C1B096C6E006C0DEF /* UIImage+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B247491B096C6E006C0DEF /* UIImage+Utils.m */; };
+		00B247301B0954A6006C0DEF /* LECropPictureControllerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B2472F1B0954A6006C0DEF /* LECropPictureControllerDemoTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,26 +30,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00B2470D1B0954A6006C0DEF /* LEEditPictureControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LEEditPictureControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		00AB9FF41B0D635F00D12264 /* LECropPictureControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LECropPictureControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		00AB9FF51B0D635F00D12264 /* LECropPictureControllerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LECropPictureControllerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00AB9FF71B0D638000D12264 /* CameraCropOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCropOverlay.h; sourceTree = "<group>"; };
+		00AB9FF81B0D638000D12264 /* CameraCropOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraCropOverlay.m; sourceTree = "<group>"; };
+		00AB9FF91B0D638000D12264 /* LECropPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LECropPictureViewController.h; sourceTree = "<group>"; };
+		00AB9FFA1B0D638000D12264 /* LECropPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LECropPictureViewController.m; sourceTree = "<group>"; };
+		00AB9FFB1B0D638000D12264 /* UIImage+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Utils.h"; sourceTree = "<group>"; };
+		00AB9FFC1B0D638000D12264 /* UIImage+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Utils.m"; sourceTree = "<group>"; };
 		00B247111B0954A6006C0DEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00B247121B0954A6006C0DEF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		00B247141B0954A6006C0DEF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		00B247151B0954A6006C0DEF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		00B247181B0954A6006C0DEF /* LEEditPictureControllerDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LEEditPictureControllerDemo.xcdatamodel; sourceTree = "<group>"; };
 		00B2471A1B0954A6006C0DEF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		00B2471B1B0954A6006C0DEF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		00B2471E1B0954A6006C0DEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		00B247201B0954A6006C0DEF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		00B247231B0954A6006C0DEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		00B247291B0954A6006C0DEF /* LEEditPictureControllerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LEEditPictureControllerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00B2472E1B0954A6006C0DEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00B2472F1B0954A6006C0DEF /* LEEditPictureControllerDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEEditPictureControllerDemoTests.m; sourceTree = "<group>"; };
-		00B247441B096C6E006C0DEF /* CameraRoundOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraRoundOverlay.h; sourceTree = "<group>"; };
-		00B247451B096C6E006C0DEF /* CameraRoundOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraRoundOverlay.m; sourceTree = "<group>"; };
-		00B247461B096C6E006C0DEF /* LEEditPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEditPictureViewController.h; sourceTree = "<group>"; };
-		00B247471B096C6E006C0DEF /* LEEditPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEEditPictureViewController.m; sourceTree = "<group>"; };
-		00B247481B096C6E006C0DEF /* UIImage+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Utils.h"; sourceTree = "<group>"; };
-		00B247491B096C6E006C0DEF /* UIImage+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Utils.m"; sourceTree = "<group>"; };
+		00B2472F1B0954A6006C0DEF /* LECropPictureControllerDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LECropPictureControllerDemoTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,28 +69,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00AB9FF61B0D638000D12264 /* LECropPictureViewController */ = {
+			isa = PBXGroup;
+			children = (
+				00AB9FF71B0D638000D12264 /* CameraCropOverlay.h */,
+				00AB9FF81B0D638000D12264 /* CameraCropOverlay.m */,
+				00AB9FF91B0D638000D12264 /* LECropPictureViewController.h */,
+				00AB9FFA1B0D638000D12264 /* LECropPictureViewController.m */,
+				00AB9FFB1B0D638000D12264 /* UIImage+Utils.h */,
+				00AB9FFC1B0D638000D12264 /* UIImage+Utils.m */,
+			);
+			path = LECropPictureViewController;
+			sourceTree = SOURCE_ROOT;
+		};
 		00B247041B0954A6006C0DEF = {
 			isa = PBXGroup;
 			children = (
-				00B2470F1B0954A6006C0DEF /* LEEditPictureControllerDemo */,
-				00B2472C1B0954A6006C0DEF /* LEEditPictureControllerDemoTests */,
-				00B2470E1B0954A6006C0DEF /* Products */,
+				00B2470F1B0954A6006C0DEF /* LECropPictureControllerDemo */,
+				00B2472C1B0954A6006C0DEF /* LECropPictureControllerDemoTests */,
+				00AB9FF41B0D635F00D12264 /* LECropPictureControllerDemo.app */,
+				00AB9FF51B0D635F00D12264 /* LECropPictureControllerDemoTests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
-		00B2470E1B0954A6006C0DEF /* Products */ = {
+		00B2470F1B0954A6006C0DEF /* LECropPictureControllerDemo */ = {
 			isa = PBXGroup;
 			children = (
-				00B2470D1B0954A6006C0DEF /* LEEditPictureControllerDemo.app */,
-				00B247291B0954A6006C0DEF /* LEEditPictureControllerDemoTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		00B2470F1B0954A6006C0DEF /* LEEditPictureControllerDemo */ = {
-			isa = PBXGroup;
-			children = (
-				00B247431B096C6E006C0DEF /* LEEditPictureController */,
+				00AB9FF61B0D638000D12264 /* LECropPictureViewController */,
 				00B247141B0954A6006C0DEF /* AppDelegate.h */,
 				00B247151B0954A6006C0DEF /* AppDelegate.m */,
 				00B2471A1B0954A6006C0DEF /* ViewController.h */,
@@ -100,10 +103,9 @@
 				00B2471D1B0954A6006C0DEF /* Main.storyboard */,
 				00B247201B0954A6006C0DEF /* Images.xcassets */,
 				00B247221B0954A6006C0DEF /* LaunchScreen.xib */,
-				00B247171B0954A6006C0DEF /* LEEditPictureControllerDemo.xcdatamodeld */,
 				00B247101B0954A6006C0DEF /* Supporting Files */,
 			);
-			path = LEEditPictureControllerDemo;
+			path = LECropPictureControllerDemo;
 			sourceTree = "<group>";
 		};
 		00B247101B0954A6006C0DEF /* Supporting Files */ = {
@@ -115,13 +117,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		00B2472C1B0954A6006C0DEF /* LEEditPictureControllerDemoTests */ = {
+		00B2472C1B0954A6006C0DEF /* LECropPictureControllerDemoTests */ = {
 			isa = PBXGroup;
 			children = (
-				00B2472F1B0954A6006C0DEF /* LEEditPictureControllerDemoTests.m */,
+				00B2472F1B0954A6006C0DEF /* LECropPictureControllerDemoTests.m */,
 				00B2472D1B0954A6006C0DEF /* Supporting Files */,
 			);
-			path = LEEditPictureControllerDemoTests;
+			path = LECropPictureControllerDemoTests;
 			sourceTree = "<group>";
 		};
 		00B2472D1B0954A6006C0DEF /* Supporting Files */ = {
@@ -132,25 +134,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		00B247431B096C6E006C0DEF /* LEEditPictureController */ = {
-			isa = PBXGroup;
-			children = (
-				00B247441B096C6E006C0DEF /* CameraRoundOverlay.h */,
-				00B247451B096C6E006C0DEF /* CameraRoundOverlay.m */,
-				00B247461B096C6E006C0DEF /* LEEditPictureViewController.h */,
-				00B247471B096C6E006C0DEF /* LEEditPictureViewController.m */,
-				00B247481B096C6E006C0DEF /* UIImage+Utils.h */,
-				00B247491B096C6E006C0DEF /* UIImage+Utils.m */,
-			);
-			path = LEEditPictureController;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00B2470C1B0954A6006C0DEF /* LEEditPictureControllerDemo */ = {
+		00B2470C1B0954A6006C0DEF /* LECropPictureControllerDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00B247331B0954A6006C0DEF /* Build configuration list for PBXNativeTarget "LEEditPictureControllerDemo" */;
+			buildConfigurationList = 00B247331B0954A6006C0DEF /* Build configuration list for PBXNativeTarget "LECropPictureControllerDemo" */;
 			buildPhases = (
 				00B247091B0954A6006C0DEF /* Sources */,
 				00B2470A1B0954A6006C0DEF /* Frameworks */,
@@ -160,14 +149,14 @@
 			);
 			dependencies = (
 			);
-			name = LEEditPictureControllerDemo;
+			name = LECropPictureControllerDemo;
 			productName = LEEditPictureControllerDemo;
-			productReference = 00B2470D1B0954A6006C0DEF /* LEEditPictureControllerDemo.app */;
+			productReference = 00AB9FF41B0D635F00D12264 /* LECropPictureControllerDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		00B247281B0954A6006C0DEF /* LEEditPictureControllerDemoTests */ = {
+		00B247281B0954A6006C0DEF /* LECropPictureControllerDemoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00B247361B0954A6006C0DEF /* Build configuration list for PBXNativeTarget "LEEditPictureControllerDemoTests" */;
+			buildConfigurationList = 00B247361B0954A6006C0DEF /* Build configuration list for PBXNativeTarget "LECropPictureControllerDemoTests" */;
 			buildPhases = (
 				00B247251B0954A6006C0DEF /* Sources */,
 				00B247261B0954A6006C0DEF /* Frameworks */,
@@ -178,9 +167,9 @@
 			dependencies = (
 				00B2472B1B0954A6006C0DEF /* PBXTargetDependency */,
 			);
-			name = LEEditPictureControllerDemoTests;
+			name = LECropPictureControllerDemoTests;
 			productName = LEEditPictureControllerDemoTests;
-			productReference = 00B247291B0954A6006C0DEF /* LEEditPictureControllerDemoTests.xctest */;
+			productReference = 00AB9FF51B0D635F00D12264 /* LECropPictureControllerDemoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -201,7 +190,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 00B247081B0954A6006C0DEF /* Build configuration list for PBXProject "LEEditPictureControllerDemo" */;
+			buildConfigurationList = 00B247081B0954A6006C0DEF /* Build configuration list for PBXProject "LECropPictureControllerDemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -210,12 +199,12 @@
 				Base,
 			);
 			mainGroup = 00B247041B0954A6006C0DEF;
-			productRefGroup = 00B2470E1B0954A6006C0DEF /* Products */;
+			productRefGroup = 00B247041B0954A6006C0DEF;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				00B2470C1B0954A6006C0DEF /* LEEditPictureControllerDemo */,
-				00B247281B0954A6006C0DEF /* LEEditPictureControllerDemoTests */,
+				00B2470C1B0954A6006C0DEF /* LECropPictureControllerDemo */,
+				00B247281B0954A6006C0DEF /* LECropPictureControllerDemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -246,11 +235,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				00B247161B0954A6006C0DEF /* AppDelegate.m in Sources */,
-				00B247191B0954A6006C0DEF /* LEEditPictureControllerDemo.xcdatamodeld in Sources */,
-				00B2474B1B096C6E006C0DEF /* LEEditPictureViewController.m in Sources */,
-				00B2474C1B096C6E006C0DEF /* UIImage+Utils.m in Sources */,
 				00B2471C1B0954A6006C0DEF /* ViewController.m in Sources */,
-				00B2474A1B096C6E006C0DEF /* CameraRoundOverlay.m in Sources */,
+				00AB9FFE1B0D638000D12264 /* LECropPictureViewController.m in Sources */,
+				00AB9FFF1B0D638000D12264 /* UIImage+Utils.m in Sources */,
+				00AB9FFD1B0D638000D12264 /* CameraCropOverlay.m in Sources */,
 				00B247131B0954A6006C0DEF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,7 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00B247301B0954A6006C0DEF /* LEEditPictureControllerDemoTests.m in Sources */,
+				00B247301B0954A6006C0DEF /* LECropPictureControllerDemoTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +256,7 @@
 /* Begin PBXTargetDependency section */
 		00B2472B1B0954A6006C0DEF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 00B2470C1B0954A6006C0DEF /* LEEditPictureControllerDemo */;
+			target = 00B2470C1B0954A6006C0DEF /* LECropPictureControllerDemo */;
 			targetProxy = 00B2472A1B0954A6006C0DEF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -377,7 +365,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = LEEditPictureControllerDemo/Info.plist;
+				INFOPLIST_FILE = LECropPictureControllerDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -387,7 +375,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = LEEditPictureControllerDemo/Info.plist;
+				INFOPLIST_FILE = LECropPictureControllerDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -430,7 +418,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00B247081B0954A6006C0DEF /* Build configuration list for PBXProject "LEEditPictureControllerDemo" */ = {
+		00B247081B0954A6006C0DEF /* Build configuration list for PBXProject "LECropPictureControllerDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00B247311B0954A6006C0DEF /* Debug */,
@@ -439,36 +427,25 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		00B247331B0954A6006C0DEF /* Build configuration list for PBXNativeTarget "LEEditPictureControllerDemo" */ = {
+		00B247331B0954A6006C0DEF /* Build configuration list for PBXNativeTarget "LECropPictureControllerDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00B247341B0954A6006C0DEF /* Debug */,
 				00B247351B0954A6006C0DEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		00B247361B0954A6006C0DEF /* Build configuration list for PBXNativeTarget "LEEditPictureControllerDemoTests" */ = {
+		00B247361B0954A6006C0DEF /* Build configuration list for PBXNativeTarget "LECropPictureControllerDemoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00B247371B0954A6006C0DEF /* Debug */,
 				00B247381B0954A6006C0DEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		00B247171B0954A6006C0DEF /* LEEditPictureControllerDemo.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				00B247181B0954A6006C0DEF /* LEEditPictureControllerDemo.xcdatamodel */,
-			);
-			currentVersion = 00B247181B0954A6006C0DEF /* LEEditPictureControllerDemo.xcdatamodel */;
-			path = LEEditPictureControllerDemo.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 00B247051B0954A6006C0DEF /* Project object */;
 }

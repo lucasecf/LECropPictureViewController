@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface LEEditPictureControllerDemoTests : XCTestCase
+@interface LECropPictureControllerDemoTests : XCTestCase
 
 @end
 
-@implementation LEEditPictureControllerDemoTests
+@implementation LECropPictureControllerDemoTests
 
 - (void)setUp {
     [super setUp];

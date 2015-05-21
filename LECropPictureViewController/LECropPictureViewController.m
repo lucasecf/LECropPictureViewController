@@ -6,25 +6,26 @@
 //  Copyright (c) 2014 wemob. All rights reserved.
 //
 
-#import "LEEditPictureViewController.h"
-#import "CameraRoundOverlay.h"
+#import "LECropPictureViewController.h"
+#import "CameraCropOverlay.h"
 
 #import "UIImage+Utils.h"
 
-@interface LEEditPictureViewController ()
+@interface LECropPictureViewController ()
 
-@property(nonatomic) CameraRoundOverlay *overlay;
+@property(nonatomic) CameraCropOverlay *overlay;
 
 @end
 
-@implementation LEEditPictureViewController
+@implementation LECropPictureViewController
 
 
-- (instancetype)initWithImage:(UIImage*)image
+- (instancetype)initWithImage:(UIImage*)image andCropPictureType:(LECropPictureType)cropPictureType
 {
     self = [super init];
     if (self) {
         _image = image;
+        _cropPictureType = cropPictureType;
         [self loadComponents];
     }
     return self;
@@ -53,9 +54,10 @@
     
     
     CGRect frame = imageView.frame;
-    self.overlay = [[CameraRoundOverlay alloc] initWithFrame:frame
-                                          andBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.7]
-                                                andHoleFrame:CGRectMake(20, 40, frame.size.width - 40, frame.size.width - 40)];
+    self.overlay = [[CameraCropOverlay alloc] initWithFrame:frame
+                                          backgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.7]
+                                            cropPictureType:self.cropPictureType
+                                            andOverlayFrame:CGRectMake(20, 40, frame.size.width - 40, frame.size.width - 40)];
     
     self.overlay.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [imageView addSubview:self.overlay];
@@ -91,8 +93,13 @@
 - (void)didTouchAcceptButton
 {
     if (self.photoAcceptedBlock) {
-        UIImage *croppedImge = [self.image cropImageInRect:self.overlay.holeView.frame forParentBound:self.overlay.bounds];
-        self.photoAcceptedBlock([croppedImge imageWithRoundedBounds]);
+        UIImage *croppedImage = [self.image cropImageInRect:self.overlay.cropView.frame forParentBound:self.overlay.bounds];
+        
+        if(self.cropPictureType == LECropPictureTypeRounded) {
+            croppedImage = [croppedImage imageWithRoundedBounds];
+        }
+        
+        self.photoAcceptedBlock(croppedImage);
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];

@@ -1,10 +1,10 @@
-LEEditPictureViewController
+LECropPictureViewController
 ===========
 
 ## What is this
 
 Want a nice crop editor for your picture? Not satisfied with the one provided for Apple? Likes rounded images?
-`LEEditPictureViewController` is the component for you :)! See the how works in the gif below:
+`LECropPictureViewController` is the component for you :)! See the how works in the gif below:
 
 <p align="center">
     <img src="Images/gif1.gif" alt="GIF 1" width="320px" />
@@ -14,7 +14,7 @@ Want a nice crop editor for your picture? Not satisfied with the one provided fo
 
 #### Manually
 
-Drag and copy all files in the [__LEEditPictureController__](LEEditPictureController) folder into your project.
+Drag and copy all files in the [__LECropPictureViewController__](LECropPictureController) folder into your project.
 
 #### Cocoapods
 
