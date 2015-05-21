@@ -1,9 +1,8 @@
 //
 //  UIImage+Utils.m
-//  Moodcrowd
 //
-//  Created by Lucas Eduardo on 02/09/14.
-//  Copyright (c) 2014 wemob. All rights reserved.
+//  Created by Lucas Eduardo on 18/05/15.
+//  Copyright (c) 2015 wemob. All rights reserved.
 //
 
 #import "UIImage+Utils.h"
