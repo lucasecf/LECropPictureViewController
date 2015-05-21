@@ -7,16 +7,24 @@ Want a nice crop editor for your picture? Not satisfied with the one provided fo
 `LECropPictureViewController` is the component for you :)! See the how works in the gif below:
 
 <p align="center">
-    <img src="Images/gif1.gif" alt="GIF 1" width="320px" />
+<img src="Images/gif1.gif" alt="GIF 1" width="320px" />
 </p>
 
 ## Install
 
 #### Manually
 
-Drag and copy all files in the [__LECropPictureViewController__](LECropPictureViewController) folder into your project.
+Drag and copy all files in the [__LECropPictureViewController__](LECropPictureViewController) folder into your project, or add it as a git submodule.
 
 #### Cocoapods
+
+LECropPictureViewController is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod "LECropPictureViewController"
+```
+
 
 Soon!
 
@@ -37,7 +45,7 @@ The callback for the cropped picture is given through a block, when creating the
 
 ```objective-c
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
+    {
     UIImage *image = info[UIImagePickerControllerOriginalImage];
 
     [self dismissViewControllerAnimated:NO completion:nil];
@@ -65,7 +73,7 @@ The `LECropPictureViewController` has public properties for all it's components.
 
 With this, you can do things like changing the **contentMode** of the imageView, changing the **text** of the barButtonItems, etc.
 
-##Collaborate
+## Collaborate
 Liked the project? Is there something missing or that could be better? Feel free to contribute :)
 
 1. Fork it
@@ -81,5 +89,11 @@ Liked the project? Is there something missing or that could be better? Feel free
 
 5. Create a Pull Request
 
-##License
-This projected is licensed under the terms of the MIT license.
+
+## Author
+
+Lucas Eduardo, lucasecf@gmail.com
+
+## License
+
+LECropPictureViewController is available under the MIT license. See the LICENSE file for more info.

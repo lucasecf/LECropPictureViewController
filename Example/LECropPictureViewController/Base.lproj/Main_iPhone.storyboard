@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="thK-0H-lm8">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="cpF-nu-WSh">
+            <objects>
+                <viewController id="thK-0H-lm8" customClass="LEViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ner-J6-LP5"/>
+                        <viewControllerLayoutGuide type="bottom" id="E9B-9I-vEg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4ga-7Q-I5p">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mjw-Ox-Hky">
+                                <rect key="frame" x="58" y="263" width="205" height="42"/>
+                                <color key="backgroundColor" red="0.8862745098" green="0.1058823529" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="MQx-me-3SB"/>
+                                    <constraint firstAttribute="width" constant="205" id="le9-LF-sAn"/>
+                                </constraints>
+                                <state key="normal" title="Show">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showImagePicker:" destination="thK-0H-lm8" eventType="touchUpInside" id="NXF-B6-wuy"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="CEK-GD-3oo">
+                                <rect key="frame" x="77" y="74" width="167" height="166"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="167" id="U69-Wo-h2o"/>
+                                    <constraint firstAttribute="height" constant="166" id="Zk0-Xq-YCg"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="CEK-GD-3oo" secondAttribute="centerX" constant="-0.5" id="9kn-SO-5LY"/>
+                            <constraint firstAttribute="centerY" secondItem="mjw-Ox-Hky" secondAttribute="centerY" id="KAu-ow-QQF"/>
+                            <constraint firstItem="CEK-GD-3oo" firstAttribute="top" secondItem="Ner-J6-LP5" secondAttribute="bottom" constant="54" id="Lcf-KO-UhG"/>
+                            <constraint firstAttribute="centerX" secondItem="mjw-Ox-Hky" secondAttribute="centerX" constant="-0.5" id="wTZ-Os-aLD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="CEK-GD-3oo" id="lVR-oJ-dE6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wbp-wG-B3f" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="defaultImage" width="500" height="500"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
