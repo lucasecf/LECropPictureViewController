@@ -36,6 +36,8 @@ Soon!
 * `LECropPictureTypeRect`
 
 ```objective-c
+#import "LECropPictureViewController.h"
+
 LECropPictureViewController *cropPictureController = [[LECropPictureViewController alloc] initWithImage:image andCropPictureType:LECropPictureTypeRounded];
 [self presentViewController:cropPictureController animated:YES completion:nil];
 ```
