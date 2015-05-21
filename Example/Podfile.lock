@@ -1,0 +1,14 @@
+PODS:
+  - LECropPictureViewController (0.1.0)
+
+DEPENDENCIES:
+  - LECropPictureViewController (from `../`)
+
+EXTERNAL SOURCES:
+  LECropPictureViewController:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  LECropPictureViewController: 24a45bcc7ab855db89542387c98611afbbb2ea64
+
+COCOAPODS: 0.37.0

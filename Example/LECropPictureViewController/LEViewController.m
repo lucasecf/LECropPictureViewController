@@ -7,23 +7,48 @@
 //
 
 #import "LEViewController.h"
+#import <LECropPictureViewController/LECropPictureViewController.h>
 
-@interface LEViewController ()
+@interface LEViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
 
 @implementation LEViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+- (IBAction)showImagePicker:(id)sender {
+    
+    
+    UIImagePickerController *imagePicker = [UIImagePickerController new];
+    imagePicker.delegate = self;
+    
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    } else {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    [self presentViewController:imagePicker animated:YES completion:nil];
 }
 
-- (void)didReceiveMemoryWarning
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    
+    [self dismissViewControllerAnimated:NO completion:nil];
+    
+    LECropPictureViewController *cropPictureController = [[LECropPictureViewController alloc] initWithImage:image andCropPictureType:LECropPictureTypeRounded];
+    cropPictureController.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    
+    cropPictureController.photoAcceptedBlock = ^(UIImage *croppedPicture){
+        self.imageView.image = croppedPicture;
+    };
+    
+    [self presentViewController:cropPictureController animated:NO completion:nil];
 }
+
 
 @end
