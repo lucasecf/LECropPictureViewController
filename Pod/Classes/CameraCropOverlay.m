@@ -29,8 +29,6 @@
         
         _cropView = [[UIView alloc] initWithFrame:overlayViewFrame];
         _cropView.backgroundColor = [UIColor clearColor];
-        _cropView.layer.borderColor = [UIColor whiteColor].CGColor;
-        _cropView.layer.borderWidth = 2.0;
         [self addSubview:_cropView];
         
         UIPanGestureRecognizer *dragGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragCropView:)];

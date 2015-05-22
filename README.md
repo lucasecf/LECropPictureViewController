@@ -39,7 +39,7 @@ LECropPictureViewController *cropPictureController = [[LECropPictureViewControll
 [self presentViewController:cropPictureController animated:YES completion:nil];
 ```
 
-The callback for the cropped picture is given through a block, when creating the editPictureController. See the exemple below, presenting the `LECropPictureViewController` inside the delegate of a UIImagePickerController:
+The callback for the cropped picture is given through a block. See the exemple below, presenting the `LECropPictureViewController` inside the delegate of a UIImagePickerController:
 
 
 ```objective-c
@@ -62,7 +62,7 @@ The callback for the cropped picture is given through a block, when creating the
 
 ## Customizing
 
-The `LECropPictureViewController` has public properties for all it's components.
+The `LECropPictureViewController` has public properties for it's components. With this, you can do things like changing the **contentMode** of the imageView, changing the **text** of the barButtonItems, etc.
 
 ```objective-c
 @property (weak, nonatomic) UIBarButtonItem *cancelButtonItem;
@@ -70,7 +70,18 @@ The `LECropPictureViewController` has public properties for all it's components.
 @property (weak, nonatomic) UIImageView *imageView;
 ```
 
-With this, you can do things like changing the **contentMode** of the imageView, changing the **text** of the barButtonItems, etc.
+
+Besides the superViews, you can customize other things like the initial frame of the crop area, borderColor and borderWidth, like below:
+
+```objective-c
+(...)
+LECropPictureViewController *cropPictureController = [[LECropPictureViewController alloc] initWithImage:image andCropPictureType:LECropPictureTypeRounded];
+cropPictureController.cropFrame = CGRectMake(50, 50, 250, 250);
+cropPictureController.borderColor = [UIColor grayColor];
+cropPictureController.borderWidth = 1.0;
+(...)
+```
+
 
 ## Collaborate
 Liked the project? Is there something missing or that could be better? Feel free to contribute :)

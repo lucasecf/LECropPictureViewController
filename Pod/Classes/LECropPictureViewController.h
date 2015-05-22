@@ -15,12 +15,24 @@ typedef NS_ENUM(NSUInteger, LECropPictureType) {
 
 @interface LECropPictureViewController : UIViewController
 
+//Image to Crop
+@property (nonatomic) UIImage *image;
+
+//Subviews
 @property (weak, nonatomic) UIBarButtonItem *cancelButtonItem;
 @property (weak, nonatomic) UIBarButtonItem *acceptButtonItem;
 @property (weak, nonatomic) UIImageView *imageView;
+
+
+//Type
 @property (nonatomic, readonly) LECropPictureType cropPictureType;
 
-@property (nonatomic) UIImage *image;
+//Configuration Properties
+@property(nonatomic) CGRect cropFrame; //default is CGRectMake(20, 40, self.view.frame.size.width - 40, self.view.frame.size.width - 40)
+@property(nonatomic) CGFloat borderWidth; //default is 2.0
+@property(nonatomic) UIColor *borderColor; //default is whiteColor
+
+//Callback Block
 @property(copy) void(^photoAcceptedBlock)(UIImage *croppedPicture);
 
 

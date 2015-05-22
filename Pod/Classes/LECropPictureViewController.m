@@ -25,6 +25,13 @@
     if (self) {
         _image = image;
         _cropPictureType = cropPictureType;
+        
+        //default values
+        _cropFrame = CGRectMake(20, 40, self.view.frame.size.width - 40, self.view.frame.size.width - 40);  //defaultFrame
+        _borderWidth = 2.0;
+        _borderColor = [UIColor whiteColor];
+        
+        //load subviews
         [self loadComponents];
     }
     return self;
@@ -56,7 +63,10 @@
     self.overlay = [[CameraCropOverlay alloc] initWithFrame:frame
                                           backgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.7]
                                             cropPictureType:self.cropPictureType
-                                            andOverlayFrame:CGRectMake(20, 40, frame.size.width - 40, frame.size.width - 40)];
+                                            andOverlayFrame:_cropFrame];
+    
+    self.overlay.cropView.layer.borderColor = _borderColor.CGColor;
+    self.overlay.cropView.layer.borderWidth = _borderWidth;
     
     self.overlay.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [imageView addSubview:self.overlay];
@@ -102,6 +112,23 @@
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Overrided setters
+
+-(void)setCropFrame:(CGRect)cropFrame {
+    [self.overlay redrawCropViewWithFrame:cropFrame];
+    _cropFrame = cropFrame;
+}
+
+-(void)setBorderWidth:(CGFloat)borderWidth {
+    self.overlay.cropView.layer.borderWidth = borderWidth;
+    _borderWidth = borderWidth;
+}
+
+-(void)setBorderColor:(UIColor *)borderColor {
+    self.overlay.cropView.layer.borderColor = borderColor.CGColor;
+    _borderColor = borderColor;
 }
 
 
