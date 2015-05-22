@@ -14,7 +14,7 @@ Want a nice crop editor for your picture? Not satisfied with the one provided fo
 
 #### Manually
 
-Drag and copy all files in the [__LECropPictureViewController__](LECropPictureViewController) folder into your project, or add it as a git submodule.
+Drag and copy all files in the [__LECropPictureViewController__](Pod/Classes) folder into your project, or add it as a git submodule.
 
 #### Cocoapods
 
