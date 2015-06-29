@@ -52,8 +52,9 @@
 
     [self.view addSubview:toolBar];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height - 44.0)];
-    imageView.image = self.image;
+    UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height - 44.0);    imageView.image = self.image;
     imageView.userInteractionEnabled = YES;
     [self.view addSubview:imageView];
     self.imageView = imageView;
