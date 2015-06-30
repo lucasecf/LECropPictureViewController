@@ -34,6 +34,7 @@ typedef NS_ENUM(NSUInteger, LECropPictureType) {
 
 //Callback Block
 @property(copy) void(^photoAcceptedBlock)(UIImage *croppedPicture);
+@property(copy) void(^photoRejectedBlock)();
 
 
 - (instancetype)initWithImage:(UIImage*)image andCropPictureType:(LECropPictureType)cropPictureType;

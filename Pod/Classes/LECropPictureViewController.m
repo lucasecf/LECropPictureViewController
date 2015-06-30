@@ -97,7 +97,11 @@
 
 - (void)didTouchCancelButton
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if (self.photoRejectedBlock) {
+        self.photoRejectedBlock();
+    } else {
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }
 }
 
 - (void)didTouchAcceptButton
