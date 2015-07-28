@@ -38,8 +38,8 @@
 }
 
 -(void)loadComponents {
-    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height - 44.0, self.view.frame.size.width, 44.0)];
-    
+    UIToolbar  *toolBar = [[UIToolbar alloc] init];
+
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(didTouchCancelButton)];
 
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
@@ -50,27 +50,42 @@
     self.cancelButtonItem = leftButton;
     self.acceptButtonItem = rightButton;
 
-    [self.view addSubview:toolBar];
-    
     UIImageView *imageView = [[UIImageView alloc] initWithImage:self.image];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
-    imageView.frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height - 44.0);
     imageView.userInteractionEnabled = YES;
-    [self.view addSubview:imageView];
+
     self.imageView = imageView;
-    
-    
-    CGRect frame = imageView.frame;
+
+    for (UIView *view in @[imageView, toolBar]) {
+        view.translatesAutoresizingMaskIntoConstraints = NO;
+    }
+
+    [self.view addSubview:imageView];
+    [self.view addSubview:toolBar];
+
+
+    NSDictionary *viewsDictionnary = NSDictionaryOfVariableBindings(toolBar, imageView);
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[imageView][toolBar(44)]|" options:0 metrics:nil views:viewsDictionnary]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[imageView]|" options:0 metrics:nil views:viewsDictionnary]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[toolBar]|" options:0 metrics:nil views:viewsDictionnary]];
+}
+
+
+- (void)viewDidLayoutSubviews {
+    CGRect frame = self.imageView.frame;
     self.overlay = [[CameraCropOverlay alloc] initWithFrame:frame
-                                          backgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.7]
+                                            backgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.7]
                                             cropPictureType:self.cropPictureType
                                             andOverlayFrame:_cropFrame];
-    
+
     self.overlay.cropView.layer.borderColor = _borderColor.CGColor;
     self.overlay.cropView.layer.borderWidth = _borderWidth;
-    
+
     self.overlay.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [imageView addSubview:self.overlay];
+    if (self.imageView.subviews.firstObject) {
+        [self.imageView.subviews.firstObject removeFromSuperview];
+    }
+    [self.imageView addSubview:self.overlay];
 }
 
 - (void)viewDidLoad
@@ -82,15 +97,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskPortrait;
-}
-
--(BOOL)shouldAutorotate {
-    return NO;
 }
 
 #pragma mark - Actions
