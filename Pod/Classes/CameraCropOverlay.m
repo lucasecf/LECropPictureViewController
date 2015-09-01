@@ -116,7 +116,12 @@
     //get frame of view when applying the scale
     CGAffineTransform newTransform = CGAffineTransformScale(recognizer.view.transform, recognizer.scale, recognizer.scale);
     CGRect transformedFrame = CGRectApplyAffineTransform(recognizer.view.frame, newTransform);
-    
+    if (self.cropPictureType == LECropPictureTypeRounded) { // preserve aspect ratio of 1:1
+        CGFloat maxSize = MIN(self.superview.frame.size.height, self.superview.frame.size.width);
+        CGFloat transformedMaxSize = MIN(transformedFrame.size.width, transformedFrame.size.height);
+        CGFloat transformedMinedSize = MIN(transformedMaxSize, maxSize);
+        transformedFrame = CGRectMake(transformedFrame.origin.x, transformedFrame.origin.y, transformedMinedSize, transformedMinedSize);
+    }
     //Get size of the circle view (wid = hgt, because its a square)
     CGFloat sizeSquare = MIN(self.frame.size.width,  MAX(MIN_RESIZE_SIZE, transformedFrame.size.width));
     recognizer.view.frame = CGRectMake(0.0, 0.0, sizeSquare, sizeSquare);

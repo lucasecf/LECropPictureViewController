@@ -28,9 +28,9 @@ typedef NS_ENUM(NSUInteger, LECropPictureType) {
 @property (nonatomic, readonly) LECropPictureType cropPictureType;
 
 //Configuration Properties
-@property(nonatomic) CGRect cropFrame; //default is CGRectMake(20, 40, self.view.frame.size.width - 40, self.view.frame.size.width - 40)
 @property(nonatomic) CGFloat borderWidth; //default is 2.0
 @property(nonatomic) UIColor *borderColor; //default is whiteColor
+@property(nonatomic) CGRect cropFrame; //default is a centred square of max size - 50 margin points
 
 //Callback Block
 @property(copy) void(^photoAcceptedBlock)(UIImage *croppedPicture);
