@@ -20,6 +20,7 @@
 
 @synthesize cropFrame = _cropFrame;
 
+static const CGFloat toolbarHeight = 44;
 
 - (instancetype)initWithImage:(UIImage*)image andCropPictureType:(LECropPictureType)cropPictureType
 {
@@ -43,8 +44,8 @@
     if (!CGRectIsNull(_cropFrame)) {
         return _cropFrame;
     }
-    CGFloat rectSize = MIN(self.view.frame.size.width, self.view.frame.size.height) - 50;
-    return CGRectMake((self.view.frame.size.width - rectSize) / 2 , (self.view.frame.size.height - rectSize) / 2, rectSize, rectSize);
+    CGFloat rectSize = MIN(self.view.frame.size.width, self.view.frame.size.height - toolbarHeight) - toolbarHeight;
+    return CGRectMake((self.view.frame.size.width - rectSize) / 2 , (self.view.frame.size.height - rectSize - toolbarHeight) / 2, rectSize, rectSize);
 }
 
 -(void)loadComponents {
@@ -75,7 +76,7 @@
 
 
     NSDictionary *viewsDictionnary = NSDictionaryOfVariableBindings(toolBar, imageView);
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[imageView][toolBar(44)]|" options:0 metrics:nil views:viewsDictionnary]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"V:|[imageView][toolBar(%f)]|", toolbarHeight] options:0 metrics:nil views:viewsDictionnary]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[imageView]|" options:0 metrics:nil views:viewsDictionnary]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[toolBar]|" options:0 metrics:nil views:viewsDictionnary]];
 }
