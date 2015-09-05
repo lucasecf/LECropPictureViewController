@@ -15,10 +15,14 @@ typedef NS_ENUM(NSUInteger, LECropPictureType) {
 
 @interface LECropPictureViewController : UIViewController
 
-//Image to Crop
+/**
+ Image that will be cropped by the controller.
+ */
 @property (nonatomic) UIImage *image;
 
-//Subviews
+/**
+ Cancel button that appears in the 
+ */
 @property (weak, nonatomic) UIBarButtonItem *cancelButtonItem;
 @property (weak, nonatomic) UIBarButtonItem *acceptButtonItem;
 @property (weak, nonatomic) UIImageView *imageView;
