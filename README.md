@@ -71,7 +71,7 @@ The `LECropPictureViewController` has public properties for it's components. Wit
 ```
 
 
-Besides the superViews, you can customize other things like the initial frame of the crop area, borderColor and borderWidth, like below:
+Besides the subviews, you can customize other things like the initial frame of the crop area, borderColor and borderWidth, like below:
 
 ```objective-c
 (...)
@@ -81,6 +81,16 @@ cropPictureController.borderColor = [UIColor grayColor];
 cropPictureController.borderWidth = 1.0;
 (...)
 ```
+
+You can even implement the ```@property(copy) void(^photoRejectedBlock)();```, if you want to override the default behaviour of the cancel button (which only dismiss the controller). Be aware that, if you do this, you will be responsible to dismiss the controller yourself.
+
+```objective-c
+cropPictureController.photoRejectedBlock = ^{
+    NSLog(@"Doing something here!");
+    [self dismissViewControllerAnimated:YES completion:nil];
+};
+```
+
 
 
 ## Collaborate
