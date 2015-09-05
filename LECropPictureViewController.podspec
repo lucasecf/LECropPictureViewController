@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "LECropPictureViewController"
-  s.version          = "0.1.0"
+  s.version          = "0.1.2"
   s.summary          = "Cropping a rect or a circle from images!"
   s.homepage         = "https://github.com/lucasecf/LECropPictureViewController"
 
