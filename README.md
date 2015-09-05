@@ -22,7 +22,7 @@ LECropPictureViewController is available through [CocoaPods](http://cocoapods.or
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "LECropPictureViewController"
+pod "LECropPictureViewController", "~> 0.1"
 ```
 
 ## How to use
