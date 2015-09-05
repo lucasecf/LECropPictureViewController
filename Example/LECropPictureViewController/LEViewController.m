@@ -19,10 +19,8 @@
 
 - (IBAction)showImagePicker:(id)sender {
     
-    
     UIImagePickerController *imagePicker = [UIImagePickerController new];
     imagePicker.delegate = self;
-    
     
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;

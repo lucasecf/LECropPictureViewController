@@ -47,8 +47,6 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    
-    
     // Drawing code
     [self.backgroundColor setFill];
     UIRectFill(rect);
@@ -69,7 +67,6 @@
         CGContextSetFillColorWithColor( context, [UIColor clearColor].CGColor );
         CGContextFillRect( context, cropRectIntersection);
     }
-    
 }
 
 -(void)redrawCropViewWithFrame:(CGRect)cropFrame
@@ -108,7 +105,6 @@
 
 -(void)resizeCropView:(UIPinchGestureRecognizer*)recognizer
 {
-    
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         self.cropCenter = recognizer.view.center;
     }
@@ -122,6 +118,7 @@
         CGFloat transformedMinedSize = MIN(transformedMaxSize, maxSize);
         transformedFrame = CGRectMake(transformedFrame.origin.x, transformedFrame.origin.y, transformedMinedSize, transformedMinedSize);
     }
+    
     //Get size of the circle view (wid = hgt, because its a square)
     CGFloat sizeSquare = MIN(self.frame.size.width,  MAX(MIN_RESIZE_SIZE, transformedFrame.size.width));
     recognizer.view.frame = CGRectMake(0.0, 0.0, sizeSquare, sizeSquare);

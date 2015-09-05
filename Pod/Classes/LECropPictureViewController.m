@@ -44,6 +44,7 @@ static const CGFloat toolbarHeight = 44;
     if (!CGRectIsNull(_cropFrame)) {
         return _cropFrame;
     }
+    
     CGFloat rectSize = MIN(self.view.frame.size.width, self.view.frame.size.height - toolbarHeight) - toolbarHeight;
     return CGRectMake((self.view.frame.size.width - rectSize) / 2 , (self.view.frame.size.height - rectSize - toolbarHeight) / 2, rectSize, rectSize);
 }
@@ -73,7 +74,6 @@ static const CGFloat toolbarHeight = 44;
 
     [self.view addSubview:imageView];
     [self.view addSubview:toolBar];
-
 
     NSDictionary *viewsDictionnary = NSDictionaryOfVariableBindings(toolBar, imageView);
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"V:|[imageView][toolBar(%f)]|", toolbarHeight] options:0 metrics:nil views:viewsDictionnary]];

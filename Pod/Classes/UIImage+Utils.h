@@ -25,7 +25,6 @@ UIKIT_STATIC_INLINE UICornerInset UICornerInsetMake(CGFloat topLeft, CGFloat top
     return cornerInset;
 }
 
-
 /*
     INTERFACE OF CATEGORY
  */
