@@ -18,6 +18,9 @@
 
 @implementation LECropPictureViewController
 
+@synthesize cropFrame = _cropFrame;
+
+static const CGFloat toolbarHeight = 44;
 
 - (instancetype)initWithImage:(UIImage*)image andCropPictureType:(LECropPictureType)cropPictureType
 {
@@ -27,7 +30,7 @@
         _cropPictureType = cropPictureType;
         
         //default values
-        _cropFrame = CGRectMake(20, 40, self.view.frame.size.width - 40, self.view.frame.size.width - 40);  //defaultFrame
+        _cropFrame = CGRectNull;
         _borderWidth = 2.0;
         _borderColor = [UIColor whiteColor];
         
@@ -35,6 +38,14 @@
         [self loadComponents];
     }
     return self;
+}
+
+- (CGRect)cropFrame {
+    if (!CGRectIsNull(_cropFrame)) {
+        return _cropFrame;
+    }
+    CGFloat rectSize = MIN(self.view.frame.size.width, self.view.frame.size.height - toolbarHeight) - toolbarHeight;
+    return CGRectMake((self.view.frame.size.width - rectSize) / 2 , (self.view.frame.size.height - rectSize - toolbarHeight) / 2, rectSize, rectSize);
 }
 
 -(void)loadComponents {
@@ -65,7 +76,7 @@
 
 
     NSDictionary *viewsDictionnary = NSDictionaryOfVariableBindings(toolBar, imageView);
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[imageView][toolBar(44)]|" options:0 metrics:nil views:viewsDictionnary]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"V:|[imageView][toolBar(%f)]|", toolbarHeight] options:0 metrics:nil views:viewsDictionnary]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[imageView]|" options:0 metrics:nil views:viewsDictionnary]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[toolBar]|" options:0 metrics:nil views:viewsDictionnary]];
 }
@@ -76,11 +87,10 @@
     self.overlay = [[CameraCropOverlay alloc] initWithFrame:frame
                                             backgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.7]
                                             cropPictureType:self.cropPictureType
-                                            andOverlayFrame:_cropFrame];
+                                            andOverlayFrame:self.cropFrame];
 
     self.overlay.cropView.layer.borderColor = _borderColor.CGColor;
     self.overlay.cropView.layer.borderWidth = _borderWidth;
-
     self.overlay.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     if (self.imageView.subviews.firstObject) {
         [self.imageView.subviews.firstObject removeFromSuperview];
