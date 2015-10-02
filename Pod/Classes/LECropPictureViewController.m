@@ -13,6 +13,7 @@
 @interface LECropPictureViewController ()
 
 @property(nonatomic) CameraCropOverlay *overlay;
+@property (nonatomic, weak) UIToolbar *toolBar;
 
 @end
 
@@ -50,14 +51,15 @@ static const CGFloat toolbarHeight = 44;
 }
 
 -(void)loadComponents {
-    UIToolbar  *toolBar = [[UIToolbar alloc] init];
+    UIToolbar *toolBar = [[UIToolbar alloc] init];
+    self.toolBar = toolBar;
 
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(didTouchCancelButton)];
 
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Accept" style:UIBarButtonItemStylePlain target:self action:@selector(didTouchAcceptButton)];
-    
+
     [toolBar setItems:@[leftButton, flexibleSpace, rightButton]];
     self.cancelButtonItem = leftButton;
     self.acceptButtonItem = rightButton;
@@ -152,5 +154,15 @@ static const CGFloat toolbarHeight = 44;
     _borderColor = borderColor;
 }
 
+- (void)setToolBarBarTintColor:(UIColor *)toolBarBarTintColor {
+    self.toolBar.barTintColor = toolBarBarTintColor;
+    _toolBarBarTintColor = toolBarBarTintColor;
+}
+
+
+- (void)setToolBarTintColor:(UIColor *)toolBarTintColor {
+    self.toolBar.tintColor = toolBarTintColor;
+    _toolBarTintColor = toolBarTintColor;
+}
 
 @end
