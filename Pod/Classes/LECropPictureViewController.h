@@ -59,6 +59,16 @@ typedef NS_ENUM(NSUInteger, LECropPictureType) {
 @property(nonatomic) CGRect cropFrame;
 
 /**
+ * Controls the toolBar color.
+ */
+@property (nonatomic, strong) UIColor *toolBarBarTintColor;
+
+/**
+ * Controls the toolBar buttons color.
+ */
+@property (nonatomic, strong) UIColor *toolBarTintColor;
+
+/**
  Called when the accept button is pressed.
  
  @param croppedPicture The cropped image (as circle or square) returned by the controller.
