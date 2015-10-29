@@ -42,6 +42,16 @@ typedef NS_ENUM(NSUInteger, LECropPictureType) {
  */
 @property (nonatomic, readonly) LECropPictureType cropPictureType;
 
+/**
+ Readonly property, to tell if the controller what is the overlay background color.
+ */
+@property (nonatomic, readonly) UIColor *backgroundColor;
+
+
+/**
+ Controls the background color of the crop overlay. Default is black.
+ */
+@property(nonatomic) UIColor *overlayColor;
 
 /**
  Controls the border width for the crop component. Default value is 2.0.
@@ -92,4 +102,15 @@ typedef NS_ENUM(NSUInteger, LECropPictureType) {
  */
 - (instancetype)initWithImage:(UIImage*)image andCropPictureType:(LECropPictureType)cropPictureType;
 
+/**
+ Extra init for this component.
+ 
+ @param image Image that will be cropped by the controller.
+ 
+ @param backgroundColor sets the background color of the overlay that goes on top of the image.
+ 
+ @param cropPictureType Tells if the crop component will crop the image as a circle or a square. Check the LECropPictureType enum to see the possible values.
+ 
+ */
+- (instancetype)initWithImage:(UIImage*)image backgroundColor:(UIColor *)backgroundColor andCropPictureType:(LECropPictureType)cropPictureType;
 @end
