@@ -47,12 +47,6 @@ typedef NS_ENUM(NSUInteger, LECropPictureType) {
  */
 @property (nonatomic, readonly) UIColor *backgroundColor;
 
-
-/**
- Controls the background color of the crop overlay. Default is black.
- */
-@property(nonatomic) UIColor *overlayColor;
-
 /**
  Controls the border width for the crop component. Default value is 2.0.
  */
