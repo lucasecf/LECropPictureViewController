@@ -16,7 +16,7 @@ Want a nice crop editor for your picture? Not satisfied with the one provided fo
 
 Drag and copy all files in the [__LECropPictureViewController__](Pod/Classes) folder into your project, or add it as a git submodule.
 
-#### Cocoapods
+#### CocoaPods
 
 LECropPictureViewController is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
