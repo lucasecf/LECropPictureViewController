@@ -23,22 +23,28 @@
 
 static const CGFloat toolbarHeight = 44;
 
-- (instancetype)initWithImage:(UIImage*)image andCropPictureType:(LECropPictureType)cropPictureType
-{
+- (instancetype)initWithImage:(UIImage*)image backgroundColor:(UIColor *)backgroundColor andCropPictureType:(LECropPictureType)cropPictureType{
     self = [super init];
     if (self) {
         _image = image;
         _cropPictureType = cropPictureType;
+        _backgroundColor = backgroundColor;
         
         //default values
         _cropFrame = CGRectNull;
         _borderWidth = 2.0;
         _borderColor = [UIColor whiteColor];
         
+        
         //load subviews
         [self loadComponents];
     }
     return self;
+}
+
+- (instancetype)initWithImage:(UIImage*)image andCropPictureType:(LECropPictureType)cropPictureType
+{
+    return [self initWithImage:image backgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7] andCropPictureType:cropPictureType];
 }
 
 - (CGRect)cropFrame {
@@ -53,30 +59,30 @@ static const CGFloat toolbarHeight = 44;
 -(void)loadComponents {
     UIToolbar *toolBar = [[UIToolbar alloc] init];
     self.toolBar = toolBar;
-
+    
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(didTouchCancelButton)];
-
+    
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Accept" style:UIBarButtonItemStylePlain target:self action:@selector(didTouchAcceptButton)];
-
+    
     [toolBar setItems:@[leftButton, flexibleSpace, rightButton]];
     self.cancelButtonItem = leftButton;
     self.acceptButtonItem = rightButton;
-
+    
     UIImageView *imageView = [[UIImageView alloc] initWithImage:self.image];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     imageView.userInteractionEnabled = YES;
-
+    
     self.imageView = imageView;
-
+    
     for (UIView *view in @[imageView, toolBar]) {
         view.translatesAutoresizingMaskIntoConstraints = NO;
     }
-
+    
     [self.view addSubview:imageView];
     [self.view addSubview:toolBar];
-
+    
     NSDictionary *viewsDictionnary = NSDictionaryOfVariableBindings(toolBar, imageView);
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"V:|[imageView][toolBar(%f)]|", toolbarHeight] options:0 metrics:nil views:viewsDictionnary]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[imageView]|" options:0 metrics:nil views:viewsDictionnary]];
@@ -87,10 +93,10 @@ static const CGFloat toolbarHeight = 44;
 - (void)viewDidLayoutSubviews {
     CGRect frame = self.imageView.frame;
     self.overlay = [[CameraCropOverlay alloc] initWithFrame:frame
-                                            backgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.7]
+                                            backgroundColor:_backgroundColor
                                             cropPictureType:self.cropPictureType
                                             andOverlayFrame:self.cropFrame];
-
+    
     self.overlay.cropView.layer.borderColor = _borderColor.CGColor;
     self.overlay.cropView.layer.borderWidth = _borderWidth;
     self.overlay.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
