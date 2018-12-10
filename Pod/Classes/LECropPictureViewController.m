@@ -45,9 +45,12 @@ static const CGFloat toolbarHeight = 44;
     if (!CGRectIsNull(_cropFrame)) {
         return _cropFrame;
     }
-    
-    CGFloat rectSize = MIN(self.view.frame.size.width, self.view.frame.size.height - toolbarHeight) - toolbarHeight;
-    return CGRectMake((self.view.frame.size.width - rectSize) / 2 , (self.view.frame.size.height - rectSize - toolbarHeight) / 2, rectSize, rectSize);
+
+    CGFloat scaleFactor = self.image.size.width / self.imageView.frame.size.width;
+    CGFloat rectSize = MIN(self.imageView.frame.size.width, floor(self.image.size.height / scaleFactor));
+    _cropFrame = CGRectMake((self.imageView.frame.size.width - rectSize) / 2, (self.imageView.frame.size.height - rectSize) / 2, rectSize, rectSize);
+
+    return _cropFrame;
 }
 
 -(void)loadComponents {
@@ -58,7 +61,7 @@ static const CGFloat toolbarHeight = 44;
 
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Accept" style:UIBarButtonItemStylePlain target:self action:@selector(didTouchAcceptButton)];
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Accept" style:UIBarButtonItemStyleDone target:self action:@selector(didTouchAcceptButton)];
 
     [toolBar setItems:@[leftButton, flexibleSpace, rightButton]];
     self.cancelButtonItem = leftButton;
@@ -77,27 +80,59 @@ static const CGFloat toolbarHeight = 44;
     [self.view addSubview:imageView];
     [self.view addSubview:toolBar];
 
-    NSDictionary *viewsDictionnary = NSDictionaryOfVariableBindings(toolBar, imageView);
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"V:|[imageView][toolBar(%f)]|", toolbarHeight] options:0 metrics:nil views:viewsDictionnary]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[imageView]|" options:0 metrics:nil views:viewsDictionnary]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[toolBar]|" options:0 metrics:nil views:viewsDictionnary]];
+    if (@available(iOS 11, *))
+    {
+        UILayoutGuide *safeAreaLayoutGuide = self.view.safeAreaLayoutGuide;
+        [NSLayoutConstraint activateConstraints:@[
+                [imageView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+                [imageView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
+                [imageView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+                [imageView.bottomAnchor constraintEqualToAnchor:toolBar.topAnchor],
+                [toolBar.leadingAnchor constraintEqualToAnchor:safeAreaLayoutGuide.leadingAnchor],
+                [toolBar.heightAnchor constraintEqualToConstant:toolbarHeight],
+                [toolBar.trailingAnchor constraintEqualToAnchor:safeAreaLayoutGuide.trailingAnchor],
+                [toolBar.bottomAnchor constraintEqualToAnchor:safeAreaLayoutGuide.bottomAnchor],
+        ]];
+    }
+    else
+    {
+        [NSLayoutConstraint activateConstraints:@[
+                [imageView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+                [imageView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
+                [imageView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+                [imageView.bottomAnchor constraintEqualToAnchor:toolBar.topAnchor],
+                [toolBar.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+                [toolBar.heightAnchor constraintEqualToConstant:toolbarHeight],
+                [toolBar.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+                [toolBar.bottomAnchor constraintEqualToAnchor:self.bottomLayoutGuide.topAnchor],
+        ]];
+    }
 }
 
 
 - (void)viewDidLayoutSubviews {
-    CGRect frame = self.imageView.frame;
-    self.overlay = [[CameraCropOverlay alloc] initWithFrame:frame
+    [super viewDidLayoutSubviews];
+
+    if (self.overlay)
+    {
+        return;
+    }
+
+    self.overlay = [[CameraCropOverlay alloc] initWithFrame:self.imageView.frame
                                             backgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.7]
                                             cropPictureType:self.cropPictureType
                                             andOverlayFrame:self.cropFrame];
-
-    self.overlay.cropView.layer.borderColor = _borderColor.CGColor;
-    self.overlay.cropView.layer.borderWidth = _borderWidth;
-    self.overlay.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    if (self.imageView.subviews.firstObject) {
-        [self.imageView.subviews.firstObject removeFromSuperview];
-    }
+    self.overlay.cropView.layer.borderColor = self.borderColor.CGColor;
+    self.overlay.cropView.layer.borderWidth = self.borderWidth;
+    self.overlay.translatesAutoresizingMaskIntoConstraints = NO;
     [self.imageView addSubview:self.overlay];
+
+    [NSLayoutConstraint activateConstraints:@[
+            [self.overlay.leadingAnchor constraintEqualToAnchor:self.imageView.leadingAnchor],
+            [self.overlay.topAnchor constraintEqualToAnchor:self.imageView.topAnchor],
+            [self.overlay.trailingAnchor constraintEqualToAnchor:self.imageView.trailingAnchor],
+            [self.overlay.bottomAnchor constraintEqualToAnchor:self.imageView.bottomAnchor],
+    ]];
 }
 
 - (void)viewDidLoad
@@ -109,6 +144,11 @@ static const CGFloat toolbarHeight = 44;
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 #pragma mark - Actions

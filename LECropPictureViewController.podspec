@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "LECropPictureViewController"
-  s.version          = "0.1.2"
+  s.version          = "0.2.0"
   s.summary          = "Cropping a rect or a circle from images!"
   s.homepage         = "https://github.com/lucasecf/LECropPictureViewController"
 
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.author           = { "Lucas Eduardo" => "lucasecf@gmail.com" }
   s.source           = { :git => "https://github.com/lucasecf/LECropPictureViewController.git", :tag => s.version.to_s }
 
-  s.platform     = :ios, '7.0'
+  s.platform     = :ios, '9.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'

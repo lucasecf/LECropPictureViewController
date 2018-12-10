@@ -39,7 +39,6 @@
     [self dismissViewControllerAnimated:NO completion:nil];
     
     LECropPictureViewController *cropPictureController = [[LECropPictureViewController alloc] initWithImage:image andCropPictureType:LECropPictureTypeRounded];
-    cropPictureController.cropFrame = CGRectMake(50, 50, 250, 250);
     cropPictureController.borderColor = [UIColor grayColor];
     cropPictureController.borderWidth = 1.0;
     
